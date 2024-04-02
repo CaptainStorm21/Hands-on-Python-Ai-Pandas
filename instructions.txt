@@ -1,0 +1,159 @@
+##Lesson 1 
+
+https://chat.openai.com/
+
+Give me a python code to load an excel data 
+
+Change file name excel_data 
+
+##Lesson 2 
+
+Give me a python code to find out missing values in  a data
+
+Add 
+
+# Display the head
+df.head()
+
+Give me a python code for simpleimpurer to impute mission values in variabe of a data 
+
+Imputer is a machine learning function which is used to impute the missing values, or to replace themissing values in a variable in a data by a standard measure.
+
+pip install scikit-learn
+
+
+
+##Solution to excersize 1 
+import pandas as pd
+
+data = {
+    'age': [25, 30, None, 40, 35, None],
+    'income': [50000, 60000, 'XXX', 80000, 70000, 32477],
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York', 'Chicago']
+}
+
+df = pd.DataFrame(data)
+
+duplicate_row = pd.DataFrame({'age': [30, None], 'income': [60000, 'YYY'], 'city': ['Los Angeles', 'Los Angeles']})
+df = pd.concat([df, duplicate_row], ignore_index=True)
+
+print(df)
+
+
+
+## Solution to exercise 2 
+import pandas as pd
+from sklearn.impute import SimpleImputer
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000.3, 60000.34, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+
+df['income'] = pd.to_numeric(df['income'], errors='coerce')
+
+age_strategy = 'mean'  # Choose an appropriate strategy for the 'age' column
+income_strategy = 'median'  # Choose an appropriate strategy for the 'income' column
+
+age_imputer = SimpleImputer(strategy=age_strategy)
+income_imputer = SimpleImputer(strategy=income_strategy)
+
+df['age'] = age_imputer.fit_transform(df[['age']])
+df['income'] = income_imputer.fit_transform(df[['income']])
+
+df['age'] = df['age'].astype(int)
+df['income'] = df['income'].astype(float)
+
+
+print(df)
+
+##Lesson 3
+
+Give me a python code find the data types of the variables in a data
+
+Give me a python code to find out non-numberic value from the numeric values in a variable
+
+
+
+## Exercise 3
+Write the following code for creating the dataframe:
+
+import pandas as pd
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+Then, perform necessary code after this to drop the inconsistent value 'XXX' from income.
+
+Solution
+
+import pandas as pd
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+
+# Convert 'income' column to numeric, coerce errors to NaN
+df['income'] = pd.to_numeric(df['income'], errors='coerce')
+
+# Drop rows with NaN values in the 'income' column
+df = df.dropna(subset=['income'])
+
+print(df)
+
+
+In Python, specifically in the context of Pandas, dropna() is a method used to remove missing (NaN) values from a DataFrame or Series object. It allows you to drop either entire rows or entire columns that contain missing values.
+
+
+
+
+
+
+## Exercise 4
+Removing inconsistent value
+Write the following code for creating the dataframe:
+
+import pandas as pd
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+Then, perform necessary code after this to drop the inconsistent value 'XXX' from income.
+
+
+Solution 
+import pandas as pd
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+
+# Remove rows with inconsistent value 'XXX' from 'income' column
+df = df[df['income'] != 'XXX']
+
+print(df)
+
