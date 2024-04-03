@@ -229,3 +229,6 @@ print(duplicates_mask)
 df_grouped = df.groupby(['name', 'age', 'city']).first().reset_index()
 print("\nDataFrame after grouping and taking first occurrence:")
 print(df_grouped)
+
+
+
