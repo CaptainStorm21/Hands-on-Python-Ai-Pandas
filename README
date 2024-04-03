@@ -1,4 +1,4 @@
-##Lesson 1 
+# Lesson 1 
 
 https://chat.openai.com/
 
@@ -6,13 +6,13 @@ Give me a python code to load an excel data
 
 Change file name excel_data 
 
-##Lesson 2 
+# Lesson 2 
 
 Give me a python code to find out missing values in  a data
 
 Add 
 
-# Display the head
+ Display the head
 df.head()
 
 Give me a python code for simpleimpurer to impute mission values in variabe of a data 
@@ -23,7 +23,7 @@ pip install scikit-learn
 
 
 
-##Solution to excersize 1 
+## Solution to excersize 1 
 import pandas as pd
 
 data = {
@@ -39,8 +39,6 @@ df = pd.concat([df, duplicate_row], ignore_index=True)
 
 print(df)
 
-
-
 ## Solution to exercise 2 
 import pandas as pd
 from sklearn.impute import SimpleImputer
@@ -52,7 +50,7 @@ data = {
     'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
 }
  
-df = pd.DataFrame(data)
+df = pd.DataFrame(data)l
 
 df['income'] = pd.to_numeric(df['income'], errors='coerce')
 
@@ -71,7 +69,7 @@ df['income'] = df['income'].astype(float)
 
 print(df)
 
-##Lesson 3
+# Lesson 3
 
 Give me a python code find the data types of the variables in a data
 
@@ -217,17 +215,17 @@ data = {
 
 df = pd.DataFrame(data)
 
-# Method 1: Drop duplicates
+### Method 1: Drop duplicates
 df_dedup = df.drop_duplicates()
 print("DataFrame after dropping duplicates:")
 print(df_dedup)
 
-# Method 2: Identify duplicates
+### Method 2: Identify duplicates
 duplicates_mask = df.duplicated()
 print("\nMask of duplicated rows:")
 print(duplicates_mask)
 
-# Method 3: Group by and aggregate (e.g., take the first occurrence)
+### Method 3: Group by and aggregate (e.g., take the first occurrence)
 df_grouped = df.groupby(['name', 'age', 'city']).first().reset_index()
 print("\nDataFrame after grouping and taking first occurrence:")
 print(df_grouped)
