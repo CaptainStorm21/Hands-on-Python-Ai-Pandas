@@ -198,4 +198,36 @@ df = df[df['income'] != 'XXX']
 # Convert 'income' column to numeric
 df['income'] = pd.to_numeric(df['income'])
 
-print(df)
+
+## Lesson 5 
+Give me a python code to deal with duplicates
+
+To handle duplicates in a DataFrame using Pandas, you can use several methods like drop_duplicates(), duplicated(), or groupby(). Here's how you can use these methods:
+
+python
+Copy code
+import pandas as pd
+
+# Sample DataFrame
+data = {
+    'name': ['John', 'Alice', 'Bob', 'Alice', 'John'],
+    'age': [25, 30, 35, 30, 25],
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Los Angeles', 'New York']
+}
+
+df = pd.DataFrame(data)
+
+# Method 1: Drop duplicates
+df_dedup = df.drop_duplicates()
+print("DataFrame after dropping duplicates:")
+print(df_dedup)
+
+# Method 2: Identify duplicates
+duplicates_mask = df.duplicated()
+print("\nMask of duplicated rows:")
+print(duplicates_mask)
+
+# Method 3: Group by and aggregate (e.g., take the first occurrence)
+df_grouped = df.groupby(['name', 'age', 'city']).first().reset_index()
+print("\nDataFrame after grouping and taking first occurrence:")
+print(df_grouped)
