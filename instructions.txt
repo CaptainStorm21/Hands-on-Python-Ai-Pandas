@@ -157,3 +157,45 @@ df = df[df['income'] != 'XXX']
 
 print(df)
 
+
+## Exercise 5
+Assigning correct data types
+Write the following code first:
+
+import pandas as pd
+ 
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+ 
+df = pd.DataFrame(data)
+ 
+# Drop rows with 'XXX' in 'income' column
+df = df[df['income'] != 'XXX']
+Now assign correct data type to the variable income.
+
+
+solution 
+import pandas as pd
+
+# Create DataFrame
+data = {
+    'age': [25, 30, None, 40, 35],  # Three missing values
+    'income': [50000, 60000, 'XXX', 80000, 70000],  # Inconsistent value 'XXX'
+    'city': ['New York', 'Los Angeles', 'Chicago', 'Houston', 'New York']
+}
+
+print(data)
+
+df = pd.DataFrame(data)
+
+# Drop rows with 'XXX' in 'income' column
+df = df[df['income'] != 'XXX']
+
+# Convert 'income' column to numeric
+df['income'] = pd.to_numeric(df['income'])
+
+print(df)
